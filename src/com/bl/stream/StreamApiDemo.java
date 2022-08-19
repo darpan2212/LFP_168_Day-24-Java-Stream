@@ -29,6 +29,7 @@ public class StreamApiDemo {
 		intStream.map(n -> n.doubleValue()).forEach(n -> {
 			System.out.println("List with Mth3 : " + n);
 		});
+		
 	}
 
 	private static void streamForEach() {
