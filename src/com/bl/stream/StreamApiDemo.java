@@ -2,6 +2,7 @@ package com.bl.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +23,17 @@ public class StreamApiDemo {
 		});
 		streamForEach();
 		streamMap();
+		streamFilterData();
+	}
+
+	private static void streamFilterData() {
+		System.out.println("_________Filter even numbers___________");
+		Stream<Integer> intStream = intList.stream();
+
+		Predicate<Integer> isEven = n -> n % 2 == 0;
+
+		List<Integer> evenList = intStream.filter(isEven).collect(Collectors.toList());
+		evenList.forEach(System.out::println);
 	}
 
 	private static void streamMap() {
