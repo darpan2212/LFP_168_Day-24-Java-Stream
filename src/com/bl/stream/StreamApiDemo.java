@@ -20,7 +20,15 @@ public class StreamApiDemo {
 			System.out.println("List with Mth1 : " + n);
 		});
 		streamForEach();
+		streamMap();
+	}
 
+	private static void streamMap() {
+		System.out.println("________map into doubleList_______");
+		Stream<Integer> intStream = intList.stream();
+		intStream.map(n -> n.doubleValue()).forEach(n -> {
+			System.out.println("List with Mth3 : " + n);
+		});
 	}
 
 	private static void streamForEach() {
