@@ -2,6 +2,7 @@ package com.bl.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamApiDemo {
@@ -29,7 +30,12 @@ public class StreamApiDemo {
 		intStream.map(n -> n.doubleValue()).forEach(n -> {
 			System.out.println("List with Mth3 : " + n);
 		});
-		
+		List<Double> doubleList = new ArrayList<>();
+		intStream = intList.stream();
+		doubleList = intStream.map(n -> n.doubleValue()).collect(Collectors.toList());
+		doubleList.stream().forEach(n -> {
+			System.out.println("List with Mth4 : " + n);
+		});
 	}
 
 	private static void streamForEach() {
