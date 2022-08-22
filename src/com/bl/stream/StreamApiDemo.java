@@ -31,6 +31,21 @@ public class StreamApiDemo {
 		streamFindMin();
 		streamReduce();
 		streamMatch();
+		streamSort();
+
+		// Pipeline operations
+		/*
+		 * intList.stream().map(n -> n.doubleValue()).filter(n -> n % 2 == 0).distinct()
+		 * .collect(Collectors.toList());
+		 */
+	}
+
+	private static void streamSort() {
+		System.out.println("_______Stream Sort_________");
+		Comparator<Integer> compare = (num1, num2) -> num2 - num1;
+		List<Integer> sortedList = intList.stream().sorted(compare)
+				.collect(Collectors.toList());
+		sortedList.stream().forEach(System.out::println);
 	}
 
 	private static void streamMatch() {
