@@ -24,6 +24,18 @@ public class StreamApiDemo {
 		streamForEach();
 		streamMap();
 		streamFilterData();
+
+		streamFindFirst();
+	}
+
+	private static void streamFindFirst() {
+		System.out.println("_________Find First_________");
+		Stream<Integer> intStream = intList.stream();
+
+		Predicate<Integer> isEven = n -> n % 2 == 0;
+
+		int firstEven = intStream.filter(isEven).findFirst().get();
+		System.out.println("First even number appeared is :" + firstEven);
 	}
 
 	private static void streamFilterData() {
