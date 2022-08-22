@@ -15,7 +15,7 @@ public class StreamApiDemo {
 		intList = new ArrayList<>();
 
 		for (int i = 0; i < 10; i++) {
-			int random = (int) (Math.random() * 899 + 100);
+			int random = (int) (Math.random() * 899 + 100) /* / 2 * 2 */;
 			intList.add(random);
 		}
 
@@ -30,6 +30,19 @@ public class StreamApiDemo {
 		streamFindMax();
 		streamFindMin();
 		streamReduce();
+		streamMatch();
+	}
+
+	private static void streamMatch() {
+		System.out.println("_________Stream Match_________");
+
+		Predicate<Integer> isEven = n -> n % 2 == 0;
+
+		boolean anyEvenMatch = intList.stream().anyMatch(isEven);
+		System.out.println("AnyMatch with even number :" + anyEvenMatch);
+
+		boolean allEvenMatch = intList.stream().allMatch(isEven);
+		System.out.println("AllMatch with even number :" + allEvenMatch);
 	}
 
 	private static void streamReduce() {
@@ -41,7 +54,6 @@ public class StreamApiDemo {
 		System.out.println("Sum of all numbers :" + sum);
 		System.out.println("Total numbers : " + count);
 		System.out.println("Avg of all numbers : " + ((double) sum / (double) count));
-
 	}
 
 	private static void streamFindMin() {
@@ -75,8 +87,10 @@ public class StreamApiDemo {
 		Predicate<Integer> isEven = n -> n % 2 == 0;
 
 		Stream<Integer> evenNumStream = intStream.filter(isEven);
-		int firstEven = evenNumStream.findFirst().get();
-		System.out.println("First even number appeared is :" + firstEven);
+		if (intList.stream().anyMatch(isEven)) {
+			int firstEven = evenNumStream.findFirst().get();
+			System.out.println("First even number appeared is :" + firstEven);
+		}
 	}
 
 	private static void streamFilterData() {
