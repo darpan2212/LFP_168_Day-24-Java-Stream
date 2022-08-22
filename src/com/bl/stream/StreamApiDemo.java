@@ -29,6 +29,19 @@ public class StreamApiDemo {
 		streamFindFirst();
 		streamFindMax();
 		streamFindMin();
+		streamReduce();
+	}
+
+	private static void streamReduce() {
+		System.out.println("_________Find Sum_________");
+
+		long count = intList.stream().count();
+		int sum = intList.stream().reduce(0, (n1, n2) -> n1 + n2);
+
+		System.out.println("Sum of all numbers :" + sum);
+		System.out.println("Total numbers : " + count);
+		System.out.println("Avg of all numbers : " + ((double) sum / (double) count));
+
 	}
 
 	private static void streamFindMin() {
@@ -40,7 +53,7 @@ public class StreamApiDemo {
 		Stream<Integer> evenNumStream = intStream.filter(isEven);
 		Comparator<Integer> findMin = (num1, num2) -> num1 - num2;
 		int maxEven = evenNumStream.min(findMin).get();
-		System.out.println("Min even number :" + maxEven);		
+		System.out.println("Min even number :" + maxEven);
 	}
 
 	private static void streamFindMax() {
